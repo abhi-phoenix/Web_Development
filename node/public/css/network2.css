@@ -1,0 +1,230 @@
+
+html, body {
+    margin: 0; 
+    height: 100%;
+    overflow:hidden;
+  }
+  
+  header {
+    margin: auto;
+    background: turquoise;
+    text-align: center;
+    font-size: 30px;
+    padding: 1%;
+    font-weight: bold;
+  }
+  
+  main {
+    height: calc(100% - 5%);
+    width:100%;
+  }
+  
+  .highcharts {
+    height: 75%;
+  }
+  
+  #container {
+    height:100%;
+  }
+  
+  .footer {
+    background: turquoise;
+    position:absolute;
+    height:100%;
+    width:100%;
+  }
+  
+  .vul1{
+    position:absolute;
+    width: 18vw;
+    height: 5vh;
+    border: 0.15vw solid blue;
+    max-width:50%;
+    height:auto;
+    left: 2vw;
+    top:2vh;
+  }
+  
+  .vul2{
+    position:absolute;
+    width: 15vw;
+    height: 15.5vh;
+    border: 0.15vw solid blue;
+    left: 24vw;
+    top:2vh;
+  }
+  
+  .vul3{
+    position:absolute;
+    width: 7vw;
+    height: 8vh;
+    border: 0.15vw solid blue;
+    max-width:50%;
+    left: 40vw;
+    top:6vh;
+  }
+  
+  .box {
+    position:absolute;
+    background-color: lightblue;
+    text-align: center;
+    font-size: 2vw;
+    width: 26vw;
+    height: 5.5vh;
+    left: 60vw;
+    top: 3vh;
+  }
+  
+  .restart {
+    position:absolute;
+    display: inline-block;
+    border-radius: 0.5vw;
+    background-color: red;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5vw;
+    width: 9vw;
+    height: 7vh;
+    transition: all 0.5s;
+    cursor: pointer;
+    left:63.5vw;
+    top:12vh;
+  }
+  
+  .btton {
+    position:relative;
+    display: inline-block;
+    border-radius: 0.5vw;
+    background-color: #008cba;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5vw;
+    width: 9vw;
+    height: 7vh;
+    transition: all 0.5s;
+    cursor: pointer;
+    left:74.5vw;
+    top:12vh;
+  }
+  
+  .btton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .btton span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+  }
+  
+  .btton:hover span {
+    padding-right: 20px;
+  }
+  
+  .btton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  
+  /* Float cancel and delete buttons and add an equal width */
+  .cancelbtn, .deletebtn {
+    position: relative;
+    top:2vh;
+    /*float: center;*/
+    font-size:1.5vw;
+    width: 20%;
+    height:20%;
+    border-radius: 0.5vw;
+  }
+  
+  .checktitle{
+    font-size: 3.5vw;
+  }
+  
+  /* Add a color to the cancel button */
+  .cancelbtn {
+    background-color: #ccc;
+    color: black;
+  }
+  
+  /* Add a color to the delete button */
+  .deletebtn {
+    background-color: #f44336;
+  }
+  
+  /* Add padding and center-align text to the container */
+  .container {
+    padding: 16px;
+    text-align: center;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: turquoise;
+    padding-top: 50px;
+    opacity:0.9;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    position: absolute;
+    top:20vh;
+    left: 22vw;
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 0.15vw solid blue;
+    width: 50%; /* Could be more or less, depending on screen size */
+    height: 20%;
+  }
+  
+  /* Style the horizontal ruler */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* The Modal Close Button (x) */
+  .close {
+    position: absolute;
+    right: 1vw;
+    top: 1vh;
+    font-size: 2vw;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Change styles for cancel button and delete button on extra small screens */
+  @media screen and (max-width: 300px) {
+    .cancelbtn, .deletebtn {
+      width: 100%;
+    }
+  }

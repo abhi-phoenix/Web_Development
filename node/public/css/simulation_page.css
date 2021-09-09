@@ -1,0 +1,158 @@
+
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow:hidden;
+  }
+
+  header {
+    margin: auto;
+    background: turquoise;
+    text-align: center;
+    font-size: 30px;
+    font: Arial;
+    padding: 1%;
+    font-weight: bold;
+  }
+
+
+
+  main {
+    height: calc(100% - 5%);
+    width:100%;
+  }
+
+  .simulation {
+    height: 83%;
+    border: 0.1 px solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: #F5EEC2;
+
+  }
+
+  .container {
+    position:absolute;
+    font-size:5vw;
+    text-align: center;
+    height:100%;
+    width:100%;
+    top: 28vh;
+  }
+
+  .footer {
+    background: turquoise;
+    position:absolute;
+    width:100%;
+    height:100%;
+  }
+
+  .next
+  {
+    position:absolute;
+    display: inline-block;
+    border-radius: 0.5vw;
+    background-color: #008cba;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-family: Arial;
+    font-size: 1.5vw;
+    width: 9vw;
+    height: 7vh;
+    transition: all 0.5s;
+    cursor: pointer;
+    left:45.5vw;
+    top:3vh;
+  }
+
+.styled-table {
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 0.9em;
+    font-family: Arial;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th{
+  background-color: #008498;
+  padding: 12px 15px;
+}
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.address-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-table tbody tr.attack-row {
+    font-weight: bold;
+    color: #982e00;
+}
+
+.g_l_networks {
+    margin: auto;
+}
+
+.highlightClass{
+color:green;
+}
+
+.highlightClass2{
+color:red;
+}
+
+.info_bottom_page{
+text-align: center;
+font-family:Arial;
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1960px) {
+  .styled-table{
+    width: 80%;
+    font-size: 1.5em;
+  }
+  .styled-table2{
+    width: 80%;
+    font-size: 1.5em;
+  }
+
+  .info_bottom_page{
+  font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width : 0px) {
+  .styled-table{
+    width: 65%;
+  }
+  .styled-table2{
+    width: 65%;
+  }
+
+  .info_bottom_page{
+  font-size: 0.9em;
+  }
+
+}
+

@@ -1,0 +1,347 @@
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow:hidden;
+}
+
+header {
+  margin: auto;
+  background: turquoise;
+  text-align: center;
+  font-family:Arial;
+  font-size: 30px;
+  padding: 1%;
+  font-weight: bold;
+}
+
+main {
+  height: calc(100% - 5%);
+  width:100%;
+}
+
+.highcharts {
+  height: 75%;
+}
+
+#container {
+  height:100%;
+  width: 75%;
+  float: left;
+  position: relative;
+}
+
+.side-table{
+  background: #F5EEC2;
+  position:relative;
+  float: left;
+  overflow-y: scroll;
+  height: 100%;
+  width: 25%;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: auto;
+    font-family:Arial;
+    font-size: 0.9em;
+    min-width: 290px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    height: 20px;
+    width:95%;
+    overflow-y: scroll;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+caption {
+    margin-bottom: 15px;
+
+}
+.styled-table th{
+  background-color: #008498;
+  padding: 12px 15px;
+}
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    background-color: #f3f3f3;
+
+}
+
+
+.styled-table tbody tr.address-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-table tbody tr.attack-row {
+    font-weight: bold;
+    color: #982e00;
+}
+
+.styled-table2 {
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 0.9em;
+    font-family: Arial;
+    min-width: 290px;
+    width:95%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table2 thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table2 th{
+  background-color: #008498;
+  padding: 12px 15px;
+}
+.styled-table2 td {
+    padding: 12px 15px;
+}
+
+.styled-table2 tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table22 tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table2 tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table2 tbody tr.address-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-table2 tbody tr.attack-row {
+    font-weight: bold;
+    color: #982e00;
+}
+
+
+.footer {
+  background: turquoise;
+  position:absolute;
+  height:100%;
+  width:100%;
+}
+
+
+.vul1{
+  position:absolute;
+  width: 18vw;
+  height: 5vh;
+  border: 0.15vw solid blue;
+  max-width:50%;
+  height:auto;
+  left: 2vw;
+  top:2vh;
+}
+
+.vul2{
+  position:absolute;
+  width: 15vw;
+  height: 15.5vh;
+  border: 0.15vw solid blue;
+  left: 24vw;
+  top:2vh;
+}
+
+.vul3{
+  position:absolute;
+  width: 10vw;
+  height: 8vh;
+  border: 0.15vw solid blue;
+  max-width:50%;
+  left: 40vw;
+  top:6vh;
+}
+
+.box {
+  position:absolute;
+  background-color: lightblue;
+  text-align: center;
+  font-family: Arial;
+  font-size: 2vw;
+  width: 26vw;
+  height: 5.5vh;
+  left: 60vw;
+  top: 3vh;
+}
+
+.restart {
+  position:absolute;
+  display: inline-block;
+  border-radius: 0.5vw;
+  background-color: red;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.5vw;
+  font-family: Arial;
+  width: 9vw;
+  height: 7vh;
+  transition: all 0.5s;
+  cursor: pointer;
+  left:63.5vw;
+  top:12vh;
+}
+
+
+.btton {
+  position:relative;
+  display: inline-block;
+  border-radius: 0.5vw;
+  font-family: Arial;
+  background-color: #008cba;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.5vw;
+  width: 9vw;
+  height: 7vh;
+  transition: all 0.5s;
+  cursor: pointer;
+  left:74.5vw;
+  top:12vh;
+}
+
+.btton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btton span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.btton:hover span {
+  padding-right: 20px;
+}
+
+.btton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.divScroll {
+overflow-y:scroll;
+height:200px;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  position: relative;
+  top:2vh;
+  /*float: center;*/
+  font-size:1.5vw;
+  width: 20%;
+  height:20%;
+  border-radius: 0.5vw;
+}
+
+.checktitle{
+  font-size: 3.5vw;
+  font-family: Arial;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.container {
+  padding: 16px;
+  text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: turquoise;
+  padding-top: 50px;
+  opacity:0.9;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  position: absolute;
+  top:20vh;
+  left: 22vw;
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 0.15vw solid blue;
+  width: 50%; /* Could be more or less, depending on screen size */
+  height: 20%;
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 1vw;
+  top: 1vh;
+  font-size: 2vw;
+  font-weight: bold;
+  color: black;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+    width: 100%;
+  }
+}
