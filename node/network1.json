@@ -1,0 +1,419 @@
+{
+    "total_resources": 95,
+    "target_nodes": ["Windows1","MacOS1"],
+    "nodes": [
+       {
+          "id": "servers",
+          "image": "download2.png",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "115%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "workstations",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 35,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "Skype",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "Asterisk",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 35,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "Lync1",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+
+       {
+          "id": "Windows1",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/net3_red_high.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+
+       {
+          "id": "MacOS3",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_med.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+
+
+
+
+       {
+          "id": "Windows3",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_med.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "Windows4",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_med.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+
+
+       {
+          "id": "Server1",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/download2.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "Server2",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/download2.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "Server3",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/download2.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+
+       {
+          "id": "MacOS1",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/net3_red_medium.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":115,"height":90
+          }
+       },
+
+       {
+          "id": "Windows2",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_low.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "MacOS2",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/net1_sim_sys.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":115,"height":90
+          }
+       },
+       {
+          "id": "router",
+          "dataLabels": {
+             "enabled": true,
+             "align": "left",
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/router.gif)"
+          }
+       },
+       {
+          "id": "switch",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/switch.png)"
+          }
+       },
+       {
+          "id": "Internet",
+          "image": "Internet.jpg",
+          "marker": {
+             "radius": 30,
+             "symbol": "url(./images/Internet.jpg)",
+             "fillColor": "red"
+          }
+       }
+    ],
+    "connections" : {
+      "MacOS1" : "Lync1",
+      "MacOS2" : "Lync1",
+      "Windows1":"Lync1",
+      "Windows2": "Asterisk",
+      "Windows3": "Asterisk",
+      "MacOS3" : "Asterisk",
+      "Windows4":"Skype"
+    },
+
+    "data": [
+       {
+          "from": "router",
+          "to": "switch"
+       },
+       {
+          "from": "router",
+          "to": "Internet"
+       },
+       {
+          "from": "switch",
+          "to": "servers"
+       },
+       {
+          "from": "servers",
+          "to": "Server1"
+       },
+
+       {
+          "from": "Server1",
+          "to": "Server2"
+       },
+       {
+          "from": "Server2",
+          "to": "Server3"
+       },
+       {
+          "from": "switch",
+          "to": "workstations"
+       },
+       {
+          "from": "workstations",
+          "to": "Lync1"
+       },
+       {
+          "from": "workstations",
+          "to": "Asterisk"
+       },
+       {
+          "from": "workstations",
+          "to": "Skype"
+       },
+       {
+          "from": "Lync1",
+          "to": "MacOS1"
+       },
+       {
+          "from": "Lync1",
+          "to": "MacOS2"
+       },
+       {
+          "from": "Lync1",
+          "to": "Windows1"
+       },
+       {
+          "from": "Asterisk",
+          "to": "Windows2"
+       },
+       {
+          "from": "Asterisk",
+          "to": "Windows3"
+       },
+       {
+          "from": "Asterisk",
+          "to": "MacOS3"
+       },
+
+
+       {
+          "from": "Skype",
+          "to": "Windows4"
+       }
+    ]
+ }

@@ -1,0 +1,5 @@
+{
+    "study_id": 1,
+    "data_path": ["./network1_data.json", "./network2_data.json", "./network3_data.json"],
+    "network_paths": ["./network1.json", "./network2.json", "./network3.json"]
+}

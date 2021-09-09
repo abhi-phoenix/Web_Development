@@ -1,0 +1,428 @@
+{
+    "total_resources": 75,
+    "target_nodes" : ["MacOS2", "Windows1"],
+    "nodes": [
+       {
+          "id": "servers",
+          "image": "download2.png",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "115%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "Server1",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/download2.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "Server2",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/download2.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "Server3",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/download2.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "workstations",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "Skype",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "IRC",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "Outlook",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "100%"
+            }
+          },
+          "marker": {
+             "radius": 30,
+             "lineColor": "grey",
+             "lineWidth": 2,
+             "fillColor": "white"
+          }
+       },
+       {
+          "id": "MacOS1",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_high.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "Linux1",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_med.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":110,"height":80
+          }
+       },
+       {
+          "id": "Windows1",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_high.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "Windows2",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_med.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":110,"height":80
+          }
+       },
+       {
+          "id": "Windows3",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/comp_vul_low.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+        "id": "Linux2",
+        "dataLabels": {
+           "enabled": true,
+           "borderRadius": 5,
+           "backgroundColor": "rgba(252, 255, 197, 0.7)",
+           "borderWidth": 3,
+           "borderColor": "#AAA",
+           "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+        },
+        "marker": {
+           "symbol": "url(./images/comp_vul_low.png)",
+           "lineWidth": 4,
+           "lineColor": "red",
+           "fillColor": "rgba(255,0,0,0.5)",
+           "radius": 100, "width":135,"height":100
+        }
+     },
+     {
+        "id": "Linux3",
+        "dataLabels": {
+           "enabled": true,
+           "borderRadius": 5,
+           "backgroundColor": "rgba(252, 255, 197, 0.7)",
+           "borderWidth": 3,
+           "borderColor": "#AAA",
+           "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+        },
+        "marker": {
+           "symbol": "url(./images/comp_vul_med.png)",
+           "lineWidth": 4,
+           "lineColor": "red",
+           "fillColor": "rgba(255,0,0,0.5)",
+           "radius": 100, "width":135,"height":100
+        }
+     },
+
+       {
+          "id": "MacOS2",
+          "dataLabels": {
+             "enabled": true,
+             "borderRadius": 5,
+             "backgroundColor": "rgba(252, 255, 197, 0.7)",
+             "borderWidth": 3,
+             "borderColor": "#AAA",
+             "y": -40,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/net3_red_high.png)",
+             "lineWidth": 4,
+             "lineColor": "red",
+             "fillColor": "rgba(255,0,0,0.5)",
+             "radius": 100, "width":135,"height":100
+          }
+       },
+       {
+          "id": "router",
+          "dataLabels": {
+             "enabled": true,
+             "align": "left",
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/router.gif)"
+          }
+       },
+       {
+          "id": "switch",
+          "dataLabels": {
+             "enabled": true,
+             "style": {
+                "fontSize": "150%"
+            }
+          },
+          "marker": {
+             "symbol": "url(./images/switch.jpg)"
+          }
+       },
+       {
+          "id": "Internet",
+          "image": "Internet.jpg",
+          "marker": {
+             "radius": 30,
+             "symbol": "url(./images/Internet.jpg)",
+             "fillColor": "red"
+          }
+       }
+    ],
+    "connections" : {
+      "MacOS1" : "IRC",
+      "MacOS2" : "IRC",
+      "Windows1":"Outlook",
+      "Windows2": "Outlook",
+      "Windows3": "Outlook",
+      "Linux1":"Skype",
+      "Linux2":"Skype",
+      "Linux3":"Skype"
+    },
+
+    "data": [
+       {
+          "from": "router",
+          "to": "switch"
+       },
+       {
+          "from": "router",
+          "to": "Internet"
+       },
+       {
+          "from": "switch",
+          "to": "servers"
+       },
+       {
+          "from": "servers",
+          "to": "Server1"
+       },
+
+       {
+          "from": "Server1",
+          "to": "Server2"
+       },
+       {
+          "from": "Server2",
+          "to": "Server3"
+       },
+       {
+          "from": "switch",
+          "to": "workstations"
+       },
+       {
+          "from": "workstations",
+          "to": "IRC"
+       },
+       {
+          "from": "workstations",
+          "to": "Outlook"
+       },
+       {
+          "from": "Outlook",
+          "to": "Windows1"
+       },
+       {
+          "from": "Outlook",
+          "to": "Windows2"
+       },
+       {
+          "from": "Outlook",
+          "to": "Windows3"
+       },
+       {
+          "from": "workstations",
+          "to": "Skype"
+       },
+
+       {
+          "from": "Skype",
+          "to": "Linux1"
+       },
+       {
+        "from": "Skype",
+        "to": "Linux2"
+       },
+       {
+        "from": "Skype",
+        "to": "Linux3"
+       }
+    ]
+
+ }

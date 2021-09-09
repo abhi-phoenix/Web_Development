@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Final Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/final_page.css" />
+</head>
+
+<body>
+	<main>
+		<header>
+			<h1></h1>
+		</header>
+		<section class="simulation">
+			<div class="container">
+				<div id="outer_div">
+
+                    <h2>Thank You !!</h2>
+                    <p>You have successfully completed the study.</p>
+                    <p>Please use the below mentioned code to claim your compensation.</p>
+                    
+                      <div id = "para1"> 
+                        <p> 
+                        <h2>Completion Code: </h2>   
+                           <input class = "inputClass" id = "myInput">
+                          <button class="copycode" onclick="myFunction()">Copy Code</button>
+                      </p>
+                      </div>  
+                    
+                      </div>
+            </div>
+            
+		</section>
+		<section>
+			<div class="footer">
+
+			</div>
+		</section>
+    </main>
+    <script>var code = "<%= message %>"; document.getElementById("myInput").value = code;</script>
+
+    <script>
+        function myFunction() {
+      var copyText = document.getElementById("myInput");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); 
+      document.execCommand("copy");
+        }
+      </script>
+</body>
+</html>

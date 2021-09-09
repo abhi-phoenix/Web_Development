@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Simulation for Network 2 </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/simulation_page.css" />
+</head>
+<body>
+	<main>
+		<header style='font-family:Arial'>
+			Simulation of Network 2
+		</header>
+		<section class="simulation">
+			<div id="table">
+
+			</div>
+		</section>
+		<section>
+			<div class="footer">
+				<form action="/network3" method="POST">
+					<button class="next" type="submit">Next</button>
+				</form>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
+
+<script>
+var local_networks = {}
+
+var value = JSON.parse(localStorage.getItem("spent2"));
+var connections = value["connections"];
+delete value["connections"];
+
+var arr = [];
+while(arr.length < Math.round(0.4*Object.keys(value).length)){
+    var r = Math.floor(Math.random() * Object.keys(value).length) + 1;
+    console.log(r);
+    if(arr.indexOf(r) === -1) arr.push(r);
+}
+console.log("this",arr)
+console.log("spent2",value)
+//const nums = new Set();
+//while(nums.size !== Math.round(value.length*0.4)) {
+//  nums.add(Math.floor(Math.random() * value.length) + 1);
+//}
+
+//var html = "<h4>The following table shows the ID of the node,the number of resources Resources spent for a specific node, and if the Node is compromised after an attack was orchestrated.</h1>"+"<table border='1|1'>";
+
+var html = "</br><table class= 'styled-table' border='1|1'> <caption><b></b> <br></caption> <tr><th style='color:white;'>Node</th> <th style='color:white;'>Local Network</th>  <th style='color:white;'>Person-Hours Required</th> <th style='color:white;'>Node Compromised</th><th style='color:white;'>Node Addressed</th></tr>";
+var counter = 1
+for(let i in value){
+    console.log(i+''+value[i])
+    var local_workstation = connections[i];
+    console.log(connections);
+    var rand = Math.round(Math.random());
+    if(value[i][1]>0){
+    var addressed_var = "Yes";
+    }
+    else{
+    var addressed_var = "No";
+    }
+    // if value greater than 0.75, randomly that node is treated as attacked.
+    if(arr.includes(counter)){
+
+        if(local_workstation in local_networks){
+            local_networks[local_workstation][0] += 1
+                // if more than one node is attacked in local network, then that local_network is compromised.
+                if (local_networks[local_workstation][0] > 1){
+                    local_networks[local_workstation][1] = 1
+                 }
+        }
+        else{
+            local_networks[local_workstation] = [1,0]
+        }
+    console.log("th",counter);
+    html+="<tr class = 'attack-row'>";
+    html+="<td>"+i+"</td>";
+    html+="<td>"+local_workstation+"</td>";
+    html+="<td>"+value[i][0]+"</td>";
+    html+="<td>"+"Yes"+"</td>";
+    html+="<td>"+addressed_var+"</td>";
+    }
+    else if (value[i][2] == 1){
+    html+="<tr class = 'address-row'>";
+    html+="<td>"+i+"</td>";
+    html+="<td>"+local_workstation+"</td>";
+    html+="<td>"+value[i][0]+"</td>";
+    html+="<td>"+"No"+"</td>";
+    html+="<td>"+addressed_var+"</td>";
+    }
+    else{
+    html+="<tr>";
+    html+="<td>"+i+"</td>";
+    html+="<td>"+local_workstation+"</td>";
+    html+="<td>"+value[i][0]+"</td>";
+    html+="<td>"+"No"+"</td>";
+    html+="<td>"+addressed_var+"</td>";
+    }
+    html+="</tr>";
+    counter+=1
+    }
+    html+="</table>";
+
+
+//var global_string =
+//var local_string =
+var local_attacks = [];
+var local_attacks_string = "";
+for(let workstation in local_networks){
+    if (local_networks[workstation][1] == 1){
+        local_attacks.push(workstation);
+        local_attacks_string += (workstation + ', ');
+        }
+}
+
+if (local_attacks.length == 0){
+    local_attacks_string += "None";
+}
+else{
+console.log(local_attacks_string);
+local_attacks_string = local_attacks_string.slice(0,-2);
+console.log(local_attacks_string);
+
+}
+
+if (local_attacks.length >local_networks.length) {
+    var global_string = "The Global workstations Node is comprimised and all the nodes connected to it are down";
+    }
+else{
+    var global_string = "None";
+    }
+
+console.log(local_networks);
+console.log(local_attacks);
+if (global_string == 'None'){
+    global_string = "<span class='highlightClass'>"+global_string+"</span>";
+}
+else{
+    global_string = "<span class='highlightClass2'>"+global_string+"</span>";
+}
+
+if (local_attacks_string == 'None'){
+    local_attacks_string = "<span class='highlightClass'>"+local_attacks_string+"</span>";
+}
+else{
+    local_attacks_string = "<span class='highlightClass2'>"+local_attacks_string+"</span>";
+}
+
+html+= "<h4 class='info_bottom_page'>Global Networks Impacted: "+global_string+" <br> Local Networks Impacted: "+local_attacks_string+" </h4> "
+document.getElementById("table").innerHTML = html;
+
+//value[this.id] = parseInt(myWindow.document.getElementById("remedies_vals").value);
+//localStorage.setItem("spent", JSON.stringify(value));
+</script>

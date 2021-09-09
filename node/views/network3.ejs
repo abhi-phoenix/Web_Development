@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations.js"></script>
+    <title style="font-size:80px;">Network 3</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/landing_page.css" />
+</head>
+
+<body>
+    <main>
+        <header>
+            Network 3
+        </header>
+        <section class="highcharts">
+            <div id="container" ></div>
+            <div class="side-table" id="table-resources"></div>
+        </section>
+        <section >
+            <div class="footer">
+                <img class="vul1" src="images/Vulnerabilties.png" alt="Vulnerability levels" >
+                <img class="vul2" src="images/vul_levels.png" alt="Different target systems">
+                <img class="vul3" src="images/vul_legend.png" alt="Legend">
+                <div class="box" id="box_id" > Person-Hour Remaining</div>
+                <button class = "restart" onclick="localStorage.clear();location.reload();" >Reset</button>
+                <button class="btton" onClick="document.getElementById('id01').style.display='block'; add_to_form(); console.log(localStorage.getItem('allEntries'));" ><span>Commit</span></button>
+            </div>
+
+
+            <div id="id01" class="modal">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <form class="modal-content" id="modal-content" action="/simulation_page_3" method="POST">
+                  <div class="container">
+                    <div class="checktitle">Commit Network</div>
+                    <div style="font-family:Arial;font-size:2vw;">Are you sure you want to commit this network?</div>
+
+                    <div class="clearfix">
+                        <button type="submit" class="deletebtn" >Yes</button>
+                        <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'">No</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/modules/networkgraph.js"></script>
+
+</body>
+</html>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    function add_to_form()
+    {
+        form = document.getElementById("modal-content");
+        elem = document.createElement("input");
+        elem.type = "hidden";
+        elem.name = "logs";
+        title = document.createElement("input");
+        title.type = "hidden";
+        title.name = "network_no"
+        title.value = document.title;
+        elem.value = localStorage.getItem("allEntries");
+        form.appendChild(elem);
+        form.appendChild(title);
+    }
+</script>
+
+<script>
+
+
+// Clear Local storage
+localStorage.clear();
+
+// Getting the read json from the backend with info about the nodes
+mydata =  <%- JSON.stringify(jsondata) %>;
+network1_json = <%- JSON.stringify(networks) %>;
+target_nodes = network1_json["target_nodes"];
+mydata = mydata.data;
+num_resources = network1_json["total_resources"];
+
+var temp = 10;
+
+var addressed_nodes = {};
+localStorage.setItem("addressed_nodes", JSON.stringify(addressed_nodes));
+
+localStorage.seen_nodes = {};
+var resources_spent = {};
+for(let key_id in mydata[0]){
+    //console.log(key_id+' '+mydata[0][key_id]["4"]);
+    resources_spent[key_id] = [mydata[0][key_id]["4"], 0,0];
+    //console.log(resources_spent);
+    }
+ resources_spent["connections"] = network1_json["connections"];
+localStorage.setItem("spent3", JSON.stringify(resources_spent));
+
+if (localStorage.resource_addressses)
+{
+    var resource_addressses = localStorage.resource_addressses;
+}
+else
+{
+    var resource_addressses = num_resources;
+}
+localStorage.window_id = "23"
+
+var allEntries = [];
+var entry = {
+    "timestamp": "Time Stamp",
+    "ID": "ID",
+    "button":"Button",
+    "resources":"Resources",
+};
+
+allEntries.push(entry);
+localStorage.setItem("allEntries", JSON.stringify(allEntries));
+
+var entries = JSON.parse(localStorage.getItem("allEntries"));
+var html = "</br></br></br><table class= 'styled-table2' border='1|1'> <caption><b>Resources spent for each node</b> </caption> <tr><th style='color:white;'>Node</th> <th style='color:white;'>Person-Hours Used</th> </tr>";
+document.getElementById('table-resources').innerHTML = html;
+
+function text_box_refresh(){
+    document.getElementById('box_id').innerHTML = 'Person-Hour Remaining: ' + localStorage.resource_addressses;
+
+    var entries = JSON.parse(localStorage.getItem("allEntries"));
+    var html = "</br> </br><table class= 'styled-table' border='1|1'> <caption><b>Resources spent for each node</b> </caption> <tr><th style='color:white;'>Node</th> <th style='color:white;'>Person-Hours Used</th> </tr>";
+    for (var i = 0; i < entries.length; i++) {
+        console.log(entries[i]['button'])
+        if(entries[i]["button"]=='Address' ){
+            html+="<tr>";
+            html+="<td>"+entries[i]["ID"]+"</td>";
+            html+="<td>"+entries[i]["resources"]+"</td>";
+            html+="</tr>"
+        }
+    }
+    html += "</table>"
+    console.log('this 222'+document.getElementById('table-resources').innerHTML);
+    document.getElementById('table-resources').innerHTML = html;
+}
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (localStorage.resource_addressses){
+
+        document.getElementById("box_id").innerHTML = "Person-Hour Remaining: "+localStorage.resource_addressses;
+    }
+    else{
+          document.getElementById("box_id").innerHTML = "Person-Hour Remaining: "+resource_addressses;
+    }
+
+      const chart = Highcharts.chart('container', {
+        chart: {
+        type: 'networkgraph',
+        style: {
+                    fontFamily: 'Arial'
+                }
+      },
+
+      title: {
+          text: ""
+      },
+
+
+  	credits: {
+          enabled: false
+      },
+
+
+      plotOptions: {
+          networkgraph: {
+              layoutAlgorithm: {
+                  linkLength: 50 // in pixels
+              },
+              link: {
+                  color: 'red'
+              }
+          }
+      },
+      plotOptions: {
+          series: {
+              cursor: 'pointer',
+              point: {
+                  events: {
+                      click: function () {
+
+                        setInterval("text_box_refresh();",100);
+                        var brew = String(this.id);
+                        brew2= brew.replace(/\./g,"0");
+                        localStorage.setItem(brew2, this.id);
+                        localStorage.resource_addressses = resource_addressses;
+
+                        var left = screen.width/ 2.7;
+                        var top = 200;
+                        var resources_list = {};
+
+
+                        localStorage.window_id = this.id
+
+                        /// logging datetime, button
+                        var today = new Date();
+                        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                        var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+                        var dateTime = date+' '+time;
+                        console.log([dateTime,this.id,'Node','Not Applicable'])   ;
+                        var entry = {
+                            "timestamp": dateTime,
+                            "ID": this.id,
+                            "button":'Node',
+                            "resources":'Not Applicable',
+                        };
+                        var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+                        existingEntries.push(entry);
+                        localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+
+                    if(
+                        this.id == "Internet" ||
+                        this.id =="router" ||
+                        this.id =="switch")
+                        {
+                            //console.log(top, left);
+                          var myWindow = window.open(
+                            "",
+                            this.id,
+                            "width=800,height=500" + ", top=" + top + ", left=" + left
+                          );
+                          if(this.id=="router"){
+                            var name_img = "./images/"+this.id+"2.jpg";
+                          }
+                          else{
+                            var name_img = "./images/"+this.id+"2.jpg";
+                          }
+                          var img_window = "<img width='800' height='500' src=" + name_img + ">";
+                          myWindow.document.write(img_window);
+
+                        }
+
+                        else if( !(this.id in mydata[0])){
+                          document.getElementById('box_id').innerHTML = 'Person-Hour Remaining: ' + localStorage.resource_addressses;
+                          var myWindow = window.open(
+                            "",
+                            this.id,
+                            "width=800,height=500" + ", top=" + top + ", left=" + left
+                          );
+                          var window_other_var = "<h1 'id='p1' style='text-align:center;background-color: orange;'>"+this.id+"</h1>"
+                          myWindow.document.write(
+                            window_other_var
+                          );
+
+                        }
+                else
+                {
+
+                        //console.log("this.id"+this.id);
+                        var myWindow = window.open("", this.id+new Date().getTime(), "width=800,height=500"+ ", top=" + top + ", left=" + left);
+                        myWindow.onbeforeunload = function()
+                        {
+                        console.log("unload function called"+ localStorage.resource_addressses);
+                        document.getElementById('box_id').innerHTML = 'Person-Hour Remaining: ' + localStorage.resource_addressses;
+
+                        };
+                      	//reading json here will take time
+                        temp = "";
+                        var neww = String(this.id)
+                        temp = neww.replace(/\./g,"9");
+
+                      	var text_para = "Available Resources: "+temp
+                      	//myWindow.document.write("<h3 'id='p1'style='font-size:125%;'>Window displaying the vulnerabilities</h3>");
+
+
+                        var te = mydata[0][this.id]["1"]
+                        myWindow.document.write("<p style='color:rgba(255,0,0,1);font-family:Arial;font-size:115%;' id='p9'>"+te+"</p>");
+
+                        tab = mydata[0][this.id]["2"]
+
+                        vul_to_resolve = mydata[0][this.id]["3"];
+
+
+
+
+                        // changed
+                        myWindow.document.write(
+                                "<script type = 'text/javascript' >function changeval2(resource_addressses){var new_use_res = parseInt(document.getElementById('remedies_vals').value);opener.resource_addressses = resource_addressses + new_use_res; localStorage.resource_addressses=opener.resource_addressses;var existingEntries = JSON.parse(localStorage.getItem('allEntries'));for (var i = 0; i < existingEntries.length; i++) { if(existingEntries[i]['button']=='Address' && existingEntries[i]['ID']==localStorage.window_id){existingEntries[i]['button']=='';existingEntries[i]['ID']='entry deleted';existingEntries[i]['resources']='resources modified'}};localStorage.setItem('allEntries', JSON.stringify(existingEntries)); var nodes_var = JSON.parse(localStorage.getItem('addressed_nodes'));nodes_var[localStorage.window_id] = 0;localStorage.setItem('addressed_nodes', JSON.stringify(nodes_var) );console.log(JSON.parse(localStorage.getItem('addressed_nodes')))}function myprint(){console.log('print');}function changeval(resource_addressses){ var new_use_res = parseInt(document.getElementById('remedies_vals').value);console.log(new_use_res); if ((resource_addressses - new_use_res) <= 0){document.getElementById(\"p5\").innerHTML='Resources not available';return;}var nodes_var = JSON.parse(localStorage.getItem('addressed_nodes'));nodes_var[localStorage.window_id] = 1;localStorage.setItem('addressed_nodes', JSON.stringify(nodes_var) ); opener.resource_addressses = resource_addressses - new_use_res; localStorage.resource_addressses=opener.resource_addressses;var addressed_nodes = JSON.parse(localStorage.getItem('addressed_nodes'));  console.log('Address Button!'); var today = new Date();var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();var dateTime = date+' '+time;console.log([dateTime,localStorage.window_id,'Address',new_use_res]); var entry = {'timestamp': dateTime,'ID': localStorage.window_id,'button':'Address','resources':new_use_res,};var existingEntries = JSON.parse(localStorage.getItem('allEntries'));existingEntries.push(entry);localStorage.setItem('allEntries', JSON.stringify(existingEntries));console.log(existingEntries);}</");
+                      	myWindow.document.write("script> </html>");
+                        //myWindow.document.write("<label style='font-size:125%;color:rgb(0,125,255);font-weight:bold' for='Resourcess'>use resources:</label>");
+
+                        var curr_node = String(this.id);
+                        var numb_vuls = parseInt(mydata[0][this.id]["4"])
+                        var resolve_val1 = parseInt(mydata[0][this.id]["5"])
+                        var resolve_val2 = parseInt(mydata[0][this.id]["6"])
+                        var resolve_val3 = parseInt(mydata[0][this.id]["3"])
+
+                        var b_text = "<p id='p5' style='font-family:Arial;font-size:125%;color:rgb(0,125,255);'>Available Resources: "+localStorage.resource_addressses+"</p>"
+                        if (target_nodes.includes(this.id))
+                        {
+                            var temp_node_check = JSON.parse(localStorage.getItem("addressed_nodes"));
+                            var official = String(resolve_val1);
+                            var temporary =String(resolve_val2);
+                            var workaround = String(resolve_val3);
+                            var c_text = "<p id='p5' style='font-family:Arial;font-size:125%;color:rgb(0,125,255);'>Person-Hours required to address vulnerabilities: "+official+"</p>"
+
+                            if (!(this.id in temp_node_check) || temp_node_check[this.id]==0)
+                            {
+                            `// 1 `
+                                myWindow.document.write("<input type='hidden' id=\"remedies_vals\" value="+numb_vuls+">");
+                                //myWindow.document.write("<p>It will take <b>"+official+"</b> Person-Hours to address the vulnerabilities on this host</p>");
+                              //2
+                                myWindow.document.write(c_text);
+                                myWindow.document.write(b_text);
+                                myWindow.document.write("<button type='button' style='font-family:Arial;font-size:100%;margin-left:5px;margin-right:35px;background-color:rgba(255,100,0,0.9);color:white;border:4px solid #f44336; border-radius: 10px' onclick='document.getElementById(\"p5\").innerHTML=\""+'Resources Left: '+(resource_addressses-parseInt(myWindow.document.getElementById("remedies_vals").value))+"\"; changeval("+resource_addressses+"); myprint();setTimeout(\"self.close()\", 2000)'>Address Vulnerabilities</button> ");
+                                //myWindow.document.write("<button type='button' style='font-size:100%;margin-left:5px;margin-right:35px;' onclick='document.getElementById(\"p5\").innerHTML=\""+'Resources Left: '+(resource_addressses-parseInt(myWindow.document.getElementById("remedies_vals").value))+"\"; changeval("+resource_addressses+"); myprint();self.close()'>Address Vulnerabilities</button> ");
+
+                                //var resources_spent_get = localStorage.spent;
+                                //resources_spent[this.id] = parseInt(myWindow.document.getElementById("remedies_vals").value);
+                                //localStorage.setItem("spent", resources_spent)
+                                //localStorage.setItem(this.id, 1);
+                                //localStorage.seen_nodes[this.id] = 1;
+                                //console.log(localStorage.spent)
+
+
+
+                                var value = JSON.parse(localStorage.getItem("spent3"));
+                                console.log(value);
+                                value[this.id][1] = parseInt(myWindow.document.getElementById("remedies_vals").value);
+                                value[this.id][2] = 1;
+                                localStorage.setItem("spent3", JSON.stringify(value));
+                                //console.log(value);
+                            }
+                            else
+                            {
+                                var entries_temp = JSON.parse(localStorage.getItem('allEntries'));
+                                for(var i_temp=0;i_temp<entries_temp.length;i_temp++){
+                                    //console.log(this.id, entries_temp[i_temp]['ID']);
+                                    if(this.id == entries_temp[i_temp]['ID'] && entries_temp[i_temp]['button'] == "Address"){
+                                        var res_alloted_node = entries_temp[i_temp]['resources'];
+                                    }
+                                }
+                                //console.log(res_alloted_node);
+                                var option_arr = ['False', 'False', 'False'];
+                                if(res_alloted_node == official){
+                                    option_arr = ['selected', '', ''];
+                                }
+                                else if(res_alloted_node == temporary){
+                                    option_arr = ['', 'selected', ''];
+                                }
+                                else{
+                                    option_arr = ['', '', 'selected'];
+                                }
+                                //console.log('res'+option_arr);
+                                myWindow.document.write("<input type='hidden' id=\"remedies_vals\" value="+numb_vuls+">");
+                                //myWindow.document.write("<p>It will take <b>"+official+"</b> Person-Hours to address the vulnerabilities on this host</p>");
+                                myWindow.document.write(c_text);
+                                myWindow.document.write(b_text);
+                                myWindow.document.write("<button type='button' id='button_buf2' style='font-family:Arial;font-size:100%;margin-left:5px;margin-right:35px;' disabled onclick='document.getElementById(\"p5\").innerHTML=\""+'Resources Left: '+(resource_addressses-parseInt(myWindow.document.getElementById("remedies_vals").value))+"\"; changeval("+resource_addressses+");myprint();setTimeout(\"self.close()\", 2000) '>Address Vulnerabilities</button> ");
+                                myWindow.document.write("<button type='button' style='font-family:Arial;font-size:100%;' onclick='document.getElementById(\"p5\").innerHTML=\""+'Resources Left: '+(resource_addressses+parseInt(myWindow.document.getElementById("remedies_vals").value))+"\";document.getElementById(\"button_buf2\").disabled = false; document.getElementById(\"remedies_vals\").disabled = false;changeval2("+resource_addressses+");this.disabled=true;setTimeout(\"self.close()\", 2000) '>"+"Free-up Resources"+"</button>");
+
+                            }
+
+                        }
+                        else
+                        {
+                            var temp_node_check = JSON.parse(localStorage.getItem("addressed_nodes"));
+                            var official = String(resolve_val1);
+                            var temporary =String(resolve_val2);
+                            var workaround = String(parseInt(0.3*numb_vuls));
+                            var c_text = "<p id='p5' style='font-family:Arial;font-size:125%;color:rgb(0,125,255);'>Person-Hours required to address vulnerabilities: "+numb_vuls+"</p>"
+
+                            if (!(this.id in temp_node_check) || temp_node_check[this.id]==0)
+                            {
+                            //1
+
+                                myWindow.document.write("<input type='hidden' id=\"remedies_vals\" value="+numb_vuls+">");
+                                //myWindow.document.write("<p>It will take <b>"+official+"</b> Person-Hours to address the vulnerabilities on this host</p>");
+                      	    //2
+                      	        myWindow.document.write(c_text);
+                      	        myWindow.document.write(b_text);
+                      	        myWindow.document.write("<button type='button' style='font-family:Arial;font-size:100%;margin-left:5px;margin-right:35px;' onclick='document.getElementById(\"p5\").innerHTML=\""+'Resources Left: '+(resource_addressses-parseInt(myWindow.document.getElementById("remedies_vals").value))+"\"; changeval("+resource_addressses+"); this.disabled=true; myprint();setTimeout(\"self.close()\", 2000)'>Address Vulnerabilities</button> ");
+
+                                localStorage.setItem(this.id, 1);
+                                //localStorage.seen_nodes[curr_node] = 1;
+
+                                var value = parseInt(myWindow.document.getElementById("remedies_vals").value); //localStorage.spent
+                                //val[this.id] =
+                                console.log(value);
+
+                                 var value = JSON.parse(localStorage.getItem("spent3"));
+                                 console.log(value);
+                                 value[this.id][1] = parseInt(myWindow.document.getElementById("remedies_vals").value);
+                                 value[this.id][2] = 1;
+                                 localStorage.setItem("spent3", JSON.stringify(value));
+
+                            }
+                            else
+                            {
+                                //console.log("reacjed her");
+                                var entries_temp = JSON.parse(localStorage.getItem('allEntries'));
+                                //console.log(entries_temp.length);
+                                for(var i_temp=0;i_temp<entries_temp.length;i_temp++){
+                                    //console.log(this.id, entries_temp[i_temp]['ID']);
+                                    if(this.id == entries_temp[i_temp]['ID'] && entries_temp[i_temp]['button'] == "Address"){
+                                        var res_alloted_node = entries_temp[i_temp]['resources'];
+                                    }
+                                }
+                                //console.log('res'+res_alloted_node);
+                                var option_arr = ['False', 'False', 'False'];
+                                if(res_alloted_node == official){
+                                    option_arr = ['selected', '', ''];
+                                }
+                                else if(res_alloted_node == temporary){
+                                    option_arr = ['', 'selected', ''];
+                                }
+                                else{
+                                    option_arr = ['', '', 'selected'];
+                                }
+                                //console.log('res'+option_arr);
+                                myWindow.document.write("<input type='hidden' id=\"remedies_vals\" value="+numb_vuls+">");
+                               // myWindow.document.write("<p>It will take <b>"+official+"</b> Person-Hours to address the vulnerabilities on this host</p>");
+                                myWindow.document.write(c_text);
+                                myWindow.document.write(b_text);
+                                myWindow.document.write("<button type='button' id='button_buf' style='font-family:Arial;font-size:100%;margin-left:5px;margin-right:35px;' disabled onclick='document.getElementById(\"p5\").innerHTML=\""+'Resources Left: '+(resource_addressses-parseInt(myWindow.document.getElementById("remedies_vals").value))+"\"; changeval("+resource_addressses+"); this.disabled=true;myprint();setTimeout(\"self.close()\", 2000) '>Address Vulnerabilities</button> ");
+                                myWindow.document.write("<button type='button' style='font-family:Arial;font-size:100%;' onclick='document.getElementById(\"p5\").innerHTML=\""+'Resources Left: '+(resource_addressses+parseInt(myWindow.document.getElementById("remedies_vals").value))+"\";document.getElementById(\"button_buf\").disabled = false; document.getElementById(\"remedies_vals\").disabled = false;changeval2("+resource_addressses+");this.disabled=true;setTimeout(\"self.close()\", 2000) '>"+"Free-up Resources"+"</button>");
+                            }
+                        }
+                        console.log("this new local"+localStorage.resource_addressses);
+
+
+
+
+                      	var c_text = "<p id='p6' style='font-size:115%;font-family:courier;background-color:#D3D3D3;border-style:solid;'></p>"
+
+                      	myWindow.document.write(c_text);
+
+                      	// Hard coded
+                      	if (target_nodes.includes(this.id)){
+                      		myWindow.document.body.style.background = 'rgba(255,100,0,0.7)';
+
+                      	}
+
+                      	else{
+                      		myWindow.document.body.style.background = 'rgba(200,255,0,0.1)';
+                      	}
+
+                        }
+
+                    }
+                }
+            }
+        }
+    },
+
+ /*
+ attractiveForce: function (d, k) {
+                     return Math.max(-(d * d) / (k * 300), -100);
+                 },
+                 repulsiveForce: function (d, k) {
+                     return Math.min((k * k) / (d), 100);
+                 }
+  */
+    series: [{
+    /*
+layoutAlgorithm: {
+            enableSimulation: true,
+            initialPositions: 'circle',
+            linkLength:8,
+            // Applied only to links, should be 0
+            attractiveForce: function (d, k) {
+                                 return Math.max(-(d * d) / (k * 700), -100);
+                             },
+                             repulsiveForce: function (d, k) {
+                                 return Math.min((k * k) / (d), 100);
+                             },
+            integration: 'euler'
+            // Half of the repulsive force
+            //gravitationalConstant: 20
+        },
+*/
+nodes: network1_json["nodes"],
+dataLabels: {
+      enabled: false,
+textPath: {
+    enabled: false,
+    attributes: {
+        dy: -34,
+        textLength: 20,
+    }
+},
+format: ' {point.name}'
+
+},
+marker: {
+radius: 15
+},
+data: network1_json["data"],
+
+exporting: {
+allowHTML: true,
+sourceWidth: 800,
+sourceHeight: 600
+},
+
+annotations: [{
+labels: [{
+    id: 'Skype',
+    shape: 'rect',
+    text: 'Hello',
+    y: 0
+}]
+}]
+
+}],
+tooltip :
+         {
+          enabled : true,
+          formatter : function() {
+            if(this.point.name[0]=== 'W' || this.point.name[0]=== 'M' ){
+                return "<div> <span> workstation </span> </div>"
+
+            }
+            else if(this.point.name[0]=== 'S'){
+                return "<div> <span> Server </span> </div>"
+             }
+            else{
+              return "<div> <span> "+this.point.name+" </span> </div>"
+
+            }
+          }
+        },
+    }, function (chart) {
+    });
+
+
+
+});
+
+/*
+chart.series[0].update(
+    {
+        nodes: network1_json["nodes"],
+        data: network1_json["data"],
+        tooltip: {
+                        shared: false,
+                        pointFormatter: function() {
+                            return '<b>'+ this.x +'</b><br/>'+
+                                this.series.name +': '+ this.y +'<br/>'+
+                                'Total: '+ this.point.stackTotal;
+                        }
+                    }
+    }, true);
+*/
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="error.css" />
+</head>
+
+<body>
+    <div class="full-screen" id="full-screen">
+        <div class='container'>
+          <span class="error-num">5</span>
+          <div class='eye' id="eye"></div>
+          <div class='eye' id="eye"></div>
+    
+          <p class="sub-text">Oh eyeballs! Something went wrong. We're <span class="italic">looking</span> to see what happened.</p>
+          <a href="">Go back</a>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    document.getElementById("full-screen").addEventListener("mousemove",function(event) 
+    {
+        var eye = document.getElementById("eye");
+        var x = (eye.style.left) + (eye.style.width / 2);
+        var y = (eye.style.top) + (eye.style.height / 2);
+        var rad = Math.atan2(event.pageX - x, event.pageY - y);
+        var rot = (rad * (180 / Math.PI) * -1) + 180;
+        
+        styles = ` 
+        '-webkit-transform': 'rotate(' + rot + 'deg)';
+            '-moz-transform': 'rotate(' + rot + 'deg)';
+            '-ms-transform': 'rotate(' + rot + 'deg)';
+            'transform': 'rotate(' + rot + 'deg)';
+        `
+
+        styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText += styles;
+        document.head.appendChild(styleSheet);
+    });
+
+</script>
